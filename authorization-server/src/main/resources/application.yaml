@@ -1,1 +1,24 @@
+spring:
+  application:
+    name: authorization server
 
+  security:
+    oauth2:
+      authorizationserver:
+        client:
+          photo:
+            require-authorization-consent: true
+            registration:
+              client-id: photo
+              client-secret: "{bcrypt}$2a$12$EcCzPK2qJRs11R8e5xHZYe/jsfO9GEWhPCVspBYq3y3.fJjycUYcK"
+              authorization-grant-types:
+                - client_credentials
+                - authorization_code
+                - refresh_token
+              redirect-uris:
+                - http://127.0.0.1:8082/login/oauth2/code/server
+              scopes:
+                - read
+                - openid
+              client-authentication-methods:
+                - client_secret_basic
