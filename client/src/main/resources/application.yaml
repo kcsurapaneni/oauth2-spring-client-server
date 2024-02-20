@@ -1,0 +1,23 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: client
+
+  security:
+    oauth2:
+      client:
+        provider:
+          server:
+            issuer-uri: http://localhost:8080
+        registration:
+          server:
+            provider: server
+            client-id: photo
+            client-secret: photo
+            authorization-grant-type: authorization_code
+            client-authentication-method: client_secret_basic
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - read
+              - openid
